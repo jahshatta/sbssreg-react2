@@ -1,4 +1,23 @@
-.App {
+@import "~antd/dist/antd.css";
+body {
+  padding: 40px;
+}
+@media only screen and (max-width: 767px) {
+  .regForm {
+    width: 100%;
+    max-width: none;
+  }
+}
+.regForm {
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.demo-option-label-item > span {
+  margin-right: 6px;
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +54,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
