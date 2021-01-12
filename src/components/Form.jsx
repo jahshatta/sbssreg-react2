@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Form, Input, Button, Select, Radio } from "antd";
 import ReCAPTCHA from "react-google-recaptcha";
-import PhoneInput from "react-phone-number-input/input";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import countries from "../utils/countries";
 
 const TrialForm = () => {
@@ -48,6 +49,18 @@ const TrialForm = () => {
       onFinish={onFinish}
       onSubmit={onSubmit}
     >
+      <Form.Item
+        name="mobile"
+        label="Mobile"
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
+        <PhoneInput
+          country={"ru"}
+          countryCodeEditable={false}
+          value={mobile}
+          onChange={(mobile) => setMobile(mobile)}
+        />
+      </Form.Item>
       <Form.Item
         name="entity"
         onChange={onEntityChange}
@@ -131,14 +144,6 @@ const TrialForm = () => {
           }}
         />
       </Form.Item>
-      <PhoneInput
-        //   className="ant-input"
-        // international
-        country="RU"
-        value={mobile}
-        onChange={(e) => console.log("e: ", e)}
-      />
-
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Submit
