@@ -16,12 +16,14 @@
     "react-phone-input-2": "^2.13.9",
     "react-phone-number-input": "^3.1.9",
     "react-scripts": "4.0.1",
+    "source-map-explorer": "^2.5.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

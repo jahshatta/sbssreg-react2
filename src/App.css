@@ -17,6 +17,31 @@ body {
 .demo-option-label-item > span {
   margin-right: 6px;
 }
+#recaptcha > div > div {
+  margin: 0 auto;
+}
+.react-tel-input .flag-dropdown {
+  border: 1px solid #d9d9d9;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.react-tel-input .flag-dropdown:hover {
+  border: 1px solid #40a9ff;
+}
+
+.phone-input {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 2px;
+}
+.phone-input:hover {
+  border: 1px solid #40a9ff !important;
+  border-left: 1px;
+  /* border-left-width: 1px; */
+  /* border-right-width: 1px !important; */
+}
+.phone-input:hover + .flag-dropdown {
+  border-right: 1px solid #40a9ff;
+}
 /* .App {
   text-align: center;
 }

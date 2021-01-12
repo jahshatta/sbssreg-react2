@@ -1,5 +1,7 @@
 import { Card } from "antd";
 import Form from "./components/Form";
+import "react-phone-input-2/lib/plain.css";
+import "react-phone-number-input/style.css";
 import "./App.css";
 
 function App() {
