@@ -1,4 +1,4 @@
-@import "~antd/dist/antd.css";
+@import '~antd/dist/antd.less';
 body {
   padding: 40px;
 }
@@ -12,7 +12,7 @@ body {
   width: auto;
   max-width: 400px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 50px;
 }
 .demo-option-label-item > span {
   margin-right: 6px;
@@ -26,11 +26,11 @@ body {
   border-bottom-left-radius: 2px;
 }
 .react-tel-input .flag-dropdown:hover {
-  border: 1px solid #40a9ff;
+  border: 1px solid @primary-color;
 }
 
 .react-tel-input .flag-dropdown:focus {
-  border: 1px solid #40a9ff;
+  border: 1px solid @primary-color;
 }
 
 .phone-input {
@@ -39,14 +39,14 @@ body {
 }
 .phone-input:hover,
 .phone-input:focus {
-  border: 1px solid #40a9ff !important;
+  border: 1px solid @primary-color !important;
   border-left: 1px;
   /* border-left-width: 1px; */
   /* border-right-width: 1px !important; */
 }
 .phone-input:hover + .flag-dropdown,
 .phone-input:focus + .flag-dropdown {
-  border-right: 1px solid #40a9ff;
+  border-right: 1px solid @primary-color;
 }
 /* .App {
   text-align: center;

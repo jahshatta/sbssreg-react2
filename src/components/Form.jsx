@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Form, Input, Button, Radio, Pagination } from "antd";
-import ReCAPTCHA from "react-google-recaptcha";
-import PhoneInput2 from "react-phone-input-2";
+import React, { useState } from 'react';
+import { Form, Input, Button, Radio } from 'antd';
+import ReCAPTCHA from 'react-google-recaptcha';
+import PhoneInput2 from 'react-phone-input-2';
 // import countries from "../utils/countries";
 
 const TrialForm = () => {
@@ -23,19 +23,19 @@ const TrialForm = () => {
   // ));
   let captcha;
   const onValuesChange = (changedValues, allValues) => {
-    console.log("changedValues", changedValues);
-    console.log("allValues", allValues);
+    console.log('changedValues', changedValues);
+    console.log('allValues', allValues);
   };
   const onEntityChange = (e) => {
-    console.log("onEntityChange", e.target.value);
+    console.log('onEntityChange', e.target.value);
     setEntity(e.target.value);
     captcha.reset();
   };
   const onFinish = (values) => {
-    console.log("onFinish:", values);
+    console.log('onFinish:', values);
   };
   const onSubmit = (values) => {
-    console.log("onSubmit:", values);
+    console.log('onSubmit:', values);
   };
   return (
     <Form
@@ -46,14 +46,11 @@ const TrialForm = () => {
       onValuesChange={onValuesChange}
       // requiredMark={false}
       onFinish={onFinish}
-      onSubmit={onSubmit}
-    >
-      <Pagination defaultCurrent={1} total={50} showSizeChanger />
+      onSubmit={onSubmit}>
       <Form.Item
         name="entity"
         onChange={onEntityChange}
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
+        rules={[{ required: true, message: 'Please input your username!' }]}>
         <Radio.Group name="radiogroup">
           <Radio value={1}>Legal entity</Radio>
           <Radio value={2}>Individual person</Radio>
@@ -63,35 +60,31 @@ const TrialForm = () => {
         <Form.Item
           label="Company name"
           name="companyname"
-          rules={[{ required: true, message: "Please input company name" }]}
-        >
+          rules={[{ required: true, message: 'Please input company name' }]}>
           <Input />
         </Form.Item>
       )}
       <Form.Item
         label="First name"
         name="firstname"
-        rules={[{ required: true, message: "Please input your first name" }]}
-      >
+        rules={[{ required: true, message: 'Please input your first name' }]}>
         <Input />
       </Form.Item>
 
       <Form.Item
         label="Email"
         name="email"
-        rules={[{ required: true, message: "Please input your email" }]}
-      >
+        rules={[{ required: true, message: 'Please input your email' }]}>
         <Input />
       </Form.Item>
       <Form.Item
         name="mobile2"
         label="Mobile"
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
+        rules={[{ required: true, message: 'Please input your username!' }]}>
         <PhoneInput2
-          country={"ru"}
+          country={'ru'}
           countryCodeEditable={false}
-          inputStyle={{ width: "100%" }}
+          inputStyle={{ width: '100%' }}
           inputClass="phone-input"
           value={mobile}
           onChange={(mobile) => setMobile(mobile)}
@@ -101,10 +94,7 @@ const TrialForm = () => {
       <Form.Item label="Comment" name="comment">
         <TextArea />
       </Form.Item>
-      <Form.Item
-        name="recaptcha"
-        rules={[{ required: true, message: "Please input recaptcha" }]}
-      >
+      <Form.Item name="recaptcha" rules={[{ required: true, message: 'Please input recaptcha' }]}>
         <ReCAPTCHA
           sitekey="6LdJNScaAAAAAB7_MIEFS16ywetnOsln86efS9DB"
           ref={(el) => {
