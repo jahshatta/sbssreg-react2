@@ -29,17 +29,23 @@ body {
   border: 1px solid #40a9ff;
 }
 
+.react-tel-input .flag-dropdown:focus {
+  border: 1px solid #40a9ff;
+}
+
 .phone-input {
   border: 1px solid #d9d9d9 !important;
   border-radius: 2px;
 }
-.phone-input:hover {
+.phone-input:hover,
+.phone-input:focus {
   border: 1px solid #40a9ff !important;
   border-left: 1px;
   /* border-left-width: 1px; */
   /* border-right-width: 1px !important; */
 }
-.phone-input:hover + .flag-dropdown {
+.phone-input:hover + .flag-dropdown,
+.phone-input:focus + .flag-dropdown {
   border-right: 1px solid #40a9ff;
 }
 /* .App {

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Form, Input, Button, Radio } from "antd";
+import { Form, Input, Button, Radio, Pagination } from "antd";
 import ReCAPTCHA from "react-google-recaptcha";
 import PhoneInput2 from "react-phone-input-2";
-import PhoneInput from "react-phone-number-input";
 // import countries from "../utils/countries";
 
 const TrialForm = () => {
@@ -49,6 +48,7 @@ const TrialForm = () => {
       onFinish={onFinish}
       onSubmit={onSubmit}
     >
+      <Pagination defaultCurrent={1} total={50} showSizeChanger />
       <Form.Item
         name="entity"
         onChange={onEntityChange}
