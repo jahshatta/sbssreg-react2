@@ -1,6 +1,10 @@
 @import '~antd/dist/antd.less';
-body {
-  padding: 40px;
+html,
+body,
+#root,
+.App,
+.container {
+  height: 100%;
 }
 @media only screen and (max-width: 767px) {
   .regForm {
@@ -8,10 +12,16 @@ body {
     max-width: none;
   }
 }
+.App {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 100px;
+}
 .regForm {
-  width: auto;
-  max-width: 400px;
-  margin: 0 auto;
+  // width: auto;
+  // max-width: 400px;
+  // margin: 0 auto;
   padding: 50px;
 }
 .demo-option-label-item > span {

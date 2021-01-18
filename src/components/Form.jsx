@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Radio } from 'antd';
+import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import PhoneInput2 from 'react-phone-input-2';
+import { useLocation } from 'wouter';
 // import countries from "../utils/countries";
 
+// axios.defaults.baseURL = 'http://127.0.0.1';
 const TrialForm = () => {
   const [form] = Form.useForm();
   // const { Option } = Select;
   const { TextArea } = Input;
   const [entity, setEntity] = useState(1);
   const [mobile, setMobile] = useState(null);
+  const [location, setLocation] = useLocation();
 
   // const options = countries.map((d) => (
   //   <Option value={d.code} label={d.name} key={d.code}>
@@ -33,6 +37,38 @@ const TrialForm = () => {
   };
   const onFinish = (values) => {
     console.log('onFinish:', values);
+    let form_data = new FormData();
+
+    for (let key in values) {
+      console.log('key: ', key);
+      console.log('values[key]: ', values[key]);
+      form_data.append(key, values[key]);
+    }
+    console.log('formdata:', form_data);
+    axios({
+      method: 'post',
+      url: '/cgi-bin/index.cgi',
+      data: form_data,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+      .then(function (response) {
+        //handle success
+        console.log('response: ', response);
+        setLocation('/somewhere/confirm/');
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+
+    // axios
+    //   .post('/cgi-bin/index.cgi', values)
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
   const onSubmit = (values) => {
     console.log('onSubmit:', values);
@@ -47,6 +83,7 @@ const TrialForm = () => {
       // requiredMark={false}
       onFinish={onFinish}
       onSubmit={onSubmit}>
+      {`The current page is: ${location}`}
       <Form.Item
         name="entity"
         onChange={onEntityChange}
@@ -65,7 +102,7 @@ const TrialForm = () => {
         </Form.Item>
       )}
       <Form.Item
-        label="First name"
+        label="Name"
         name="firstname"
         rules={[{ required: true, message: 'Please input your first name' }]}>
         <Input />
@@ -78,7 +115,7 @@ const TrialForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        name="mobile2"
+        name="phone"
         label="Mobile"
         rules={[{ required: true, message: 'Please input your username!' }]}>
         <PhoneInput2
@@ -102,11 +139,9 @@ const TrialForm = () => {
           }}
         />
       </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+      <Button type="primary" htmlType="submit">
+        Sign up
+      </Button>
     </Form>
   );
 };
