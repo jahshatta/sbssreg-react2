@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Radio } from 'antd';
+import { Form, Input, Button } from 'antd';
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import PhoneInput2 from 'react-phone-input-2';
@@ -11,7 +11,6 @@ const TrialForm = () => {
   const [form] = Form.useForm();
   // const { Option } = Select;
   const { TextArea } = Input;
-  const [entity, setEntity] = useState(1);
   const [mobile, setMobile] = useState(null);
   const [location, setLocation] = useLocation();
 
@@ -25,15 +24,9 @@ const TrialForm = () => {
   //     </div>
   //   </Option>
   // ));
-  let captcha;
   const onValuesChange = (changedValues, allValues) => {
     console.log('changedValues', changedValues);
     console.log('allValues', allValues);
-  };
-  const onEntityChange = (e) => {
-    console.log('onEntityChange', e.target.value);
-    setEntity(e.target.value);
-    captcha.reset();
   };
   const onFinish = (values) => {
     console.log('onFinish:', values);
@@ -77,7 +70,6 @@ const TrialForm = () => {
     <Form
       form={form}
       layout="vertical"
-      initialValues={{ entity }}
       requiredMark="optional"
       onValuesChange={onValuesChange}
       // requiredMark={false}
@@ -85,22 +77,11 @@ const TrialForm = () => {
       onSubmit={onSubmit}>
       {`The current page is: ${location}`}
       <Form.Item
-        name="entity"
-        onChange={onEntityChange}
-        rules={[{ required: true, message: 'Please input your username!' }]}>
-        <Radio.Group name="radiogroup">
-          <Radio value={1}>Legal entity</Radio>
-          <Radio value={2}>Individual person</Radio>
-        </Radio.Group>
+        label="Company name"
+        name="companyname"
+        rules={[{ required: true, message: 'Please input company name' }]}>
+        <Input />
       </Form.Item>
-      {entity == 1 && (
-        <Form.Item
-          label="Company name"
-          name="companyname"
-          rules={[{ required: true, message: 'Please input company name' }]}>
-          <Input />
-        </Form.Item>
-      )}
       <Form.Item
         label="Name"
         name="firstname"
@@ -132,12 +113,7 @@ const TrialForm = () => {
         <TextArea />
       </Form.Item>
       <Form.Item name="recaptcha" rules={[{ required: true, message: 'Please input recaptcha' }]}>
-        <ReCAPTCHA
-          sitekey="6LdJNScaAAAAAB7_MIEFS16ywetnOsln86efS9DB"
-          ref={(el) => {
-            captcha = el;
-          }}
-        />
+        <ReCAPTCHA sitekey="6LdJNScaAAAAAB7_MIEFS16ywetnOsln86efS9DB" />
       </Form.Item>
       <Button type="primary" htmlType="submit">
         Sign up

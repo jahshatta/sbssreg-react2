@@ -1,0 +1,17 @@
+{
+    "name": "lb/sbss-registration-lib",
+    "authors": [
+        {
+            "name": "Vladimir Zverev",
+            "email": "zverev@lanbilling.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LB\\": "src/"
+        }
+    }
+}
