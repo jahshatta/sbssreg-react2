@@ -12,7 +12,7 @@ const Confirm = (props) => {
     if (props.token) {
       axios({
         method: 'post',
-        url: '/cgi-bin/confirm.cgi',
+        url: '/cgi-bin/sbssreg/index.cgi',
         data: qs.stringify({
           token: props.token
         }),
